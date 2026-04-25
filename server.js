@@ -51,7 +51,9 @@ app.get("/api/leads", async (req, res) => {
         res.status(500).json({ success: false });
     }
 });
-
+app.get("/test", (req, res) => {
+    res.send("API WORKING");
+});
 // ================= SERVER START =================
 const PORT = process.env.PORT || 5000;
 
