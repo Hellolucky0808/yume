@@ -9,8 +9,9 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB
-mongoose.connect("mongodb+srv://hellolucky0808_db_user:06qRWWsKshF3CarW@cluster0.jriztgx.mongodb.net/leadsDB")
+mongoose.connect("mongodb+srv://hellolucky0808_db_user:<db_password>@cluster0.jriztgx.mongodb.net/?appName=Cluster0")
 .then(() => console.log("MongoDB Connected"))
+    mongodb+srv://hellolucky0808_db_user:<db_password>@cluster0.jriztgx.mongodb.net/?appName=Cluster0
 .catch((err) => console.log("MongoDB Error:", err));
 
 // Schema
