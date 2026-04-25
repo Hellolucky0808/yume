@@ -9,10 +9,9 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB
-mongoose.connect("mongodb+srv://hellolucky0808_db_user:<db_password>@cluster0.jriztgx.mongodb.net/?appName=Cluster0")
+mongoose.connect("mongodb+srv://hellolucky0808_db_user:vXweK6e0tn3yUVuu@softwaresolution.taxypud.mongodb.net/?appName=Softwaresolution")
 .then(() => console.log("MongoDB Connected"))
-    mongodb+srv://hellolucky0808_db_user:<db_password>@cluster0.jriztgx.mongodb.net/?appName=Cluster0
-.catch((err) => console.log("MongoDB Error:", err));
+    .catch((err) => console.log("MongoDB Error:", err));
 
 // Schema
 const LeadSchema = new mongoose.Schema({
