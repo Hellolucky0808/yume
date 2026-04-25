@@ -4,16 +4,16 @@ const cors = require("cors");
 
 const app = express();
 
-// ================= MIDDLEWARE =================
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// ================= DATABASE CONNECTION =================
+// MongoDB
 mongoose.connect("mongodb+srv://hellolucky0808_db_user:06qRWWsKshF3CarW@cluster0.jriztgx.mongodb.net/leadsDB")
 .then(() => console.log("MongoDB Connected"))
 .catch((err) => console.log("MongoDB Error:", err));
 
-// ================= SCHEMA =================
+// Schema
 const LeadSchema = new mongoose.Schema({
     name: String,
     email: String,
@@ -26,12 +26,17 @@ const LeadSchema = new mongoose.Schema({
 
 const Lead = mongoose.model("Lead", LeadSchema);
 
-// ================= ROOT ROUTE =================
+// ROOT
 app.get("/", (req, res) => {
-    res.send("Server is running");
+    res.send("🔥 SERVER RUNNING FINAL");
 });
 
-// ================= SAVE LEAD =================
+// TEST
+app.get("/test", (req, res) => {
+    res.send("🔥 TEST WORKING FINAL");
+});
+
+// SAVE LEAD
 app.post("/api/leads", async (req, res) => {
     try {
         const lead = new Lead(req.body);
@@ -42,15 +47,7 @@ app.post("/api/leads", async (req, res) => {
     }
 });
 
-app.get("/", (req, res) => {
-  res.send("SERVER VERSION 2 ✅");
-});
-
-app.get("/test", (req, res) => {
-  res.send("API WORKING V2 ✅");
-});
-
-// ================= GET LEADS =================
+// GET LEADS
 app.get("/api/leads", async (req, res) => {
     try {
         const leads = await Lead.find();
@@ -59,10 +56,8 @@ app.get("/api/leads", async (req, res) => {
         res.status(500).json({ success: false });
     }
 });
-app.get("/test", (req, res) => {
-    res.send("API WORKING");
-});
-// ================= SERVER START =================
+
+// START SERVER
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
