@@ -4,17 +4,16 @@ const cors = require("cors");
 
 const app = express();
 
-// Middleware
+// ===== Middleware =====
 app.use(cors());
 app.use(express.json());
 
-// MongoDB
-
+// ===== MongoDB =====
 mongoose.connect("mongodb+srv://hellolucky0808_db_user:<vXweK6e0tn3yUVuu>@softwaresolution.taxypud.mongodb.net/?appName=Softwaresolution")
-.then(() => console.log("MongoDB Connected"))
-    .catch((err) => console.log("MongoDB Error:", err));
+.then(() => console.log("✅ MongoDB Connected"))
+.catch(err => console.error("❌ MongoDB Error:", err));
 
-// Schema
+// ===== Schema =====
 const LeadSchema = new mongoose.Schema({
     name: String,
     email: String,
@@ -27,40 +26,45 @@ const LeadSchema = new mongoose.Schema({
 
 const Lead = mongoose.model("Lead", LeadSchema);
 
-// ROOT
+// ===== Root =====
 app.get("/", (req, res) => {
-    res.send("🔥 SERVER RUNNING FINAL");
+    res.send("🚀 Server running perfectly");
 });
 
-// TEST
+// ===== Test =====
 app.get("/test", (req, res) => {
-    res.send("🔥 TEST WORKING FINAL");
+    res.send("✅ API WORKING");
 });
 
-// SAVE LEAD
+// ===== Save Lead =====
 app.post("/api/leads", async (req, res) => {
     try {
         const lead = new Lead(req.body);
         await lead.save();
+
         res.json({ success: true });
+
     } catch (error) {
-        res.status(500).json({ success: false });
+        console.error("SAVE ERROR:", error);
+        res.status(500).json({ success: false, error: error.message });
     }
 });
 
-// GET LEADS
+// ===== Get Leads =====
 app.get("/api/leads", async (req, res) => {
     try {
         const leads = await Lead.find();
         res.json(leads);
+
     } catch (error) {
-        res.status(500).json({ success: false });
+        console.error("FETCH ERROR:", error);
+        res.status(500).json({ success: false, error: error.message });
     }
 });
 
-// START SERVER
+// ===== Server =====
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`🔥 Server running on port ${PORT}`);
 });
