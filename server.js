@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // ===== MongoDB =====
-mongoose.connect("mongodb+srv://hellolucky0808_db_user:vXweK6e0tn3yUVuu@cluster0.jriztgx.mongodb.net/leadsDB?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://hellolucky0808_db_user:vXweK6e0tn3yUVuu@softwaresolution.taxypud.mongodb.net/leadsDB?retryWrites=true&w=majority&appName=Softwaresolution")
 .then(() => console.log("✅ MongoDB Connected"))
 .catch(err => console.error("❌ MongoDB Error:", err));
 
