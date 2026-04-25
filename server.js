@@ -42,6 +42,14 @@ app.post("/api/leads", async (req, res) => {
     }
 });
 
+app.get("/", (req, res) => {
+  res.send("SERVER VERSION 2 ✅");
+});
+
+app.get("/test", (req, res) => {
+  res.send("API WORKING V2 ✅");
+});
+
 // ================= GET LEADS =================
 app.get("/api/leads", async (req, res) => {
     try {
