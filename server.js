@@ -9,7 +9,8 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB
-mongoose.connect("mongodb+srv://hellolucky0808_db_user:vXweK6e0tn3yUVuu@softwaresolution.taxypud.mongodb.net/?appName=Softwaresolution")
+
+mongoose.connect("mongodb+srv://hellolucky0808_db_user:<vXweK6e0tn3yUVuu>@softwaresolution.taxypud.mongodb.net/?appName=Softwaresolution")
 .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.log("MongoDB Error:", err));
 
